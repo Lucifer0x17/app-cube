@@ -16,7 +16,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                     walletConnectors: [EthereumWalletConnectors],
                 }}
             >
-                <body>{children}</body>
+                <body cz-shortcut-listen="false">{children}</body>
             </DynamicContextProvider>
         </html>
     );

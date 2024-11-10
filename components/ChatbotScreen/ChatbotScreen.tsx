@@ -4,6 +4,7 @@ import React, { useCallback } from "react";
 import useStore from "../store/useStore";
 import "./ChatbotScreen.css";
 import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
+import { createTransaction } from "@/app/utils/brian";
 
 // Split into smaller components
 const ChatHistoryItem = ({ conversation, isActive, onClick }: any) => (
@@ -56,7 +57,7 @@ function ChatbotScreen() {
 
     return (
         <div className="chatbot-screen">
-            <div className="chat-history">
+            {/* <div className="chat-history">
                 <button
                     className="new-chat-button"
                     onClick={addNewConversation}
@@ -71,7 +72,7 @@ function ChatbotScreen() {
                         onClick={() => handleConversationClick(conversation.id)}
                     />
                 ))}
-            </div>
+            </div> */}
             <div className="chat-main">
                 <div className="chat-messages">
                     <ChatMessages
@@ -84,7 +85,7 @@ function ChatbotScreen() {
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
                         placeholder="Type your message..."
-                        onKeyPress={(e) =>
+                        onKeyDown={(e) =>
                             e.key === "Enter" &&
                             !isLoading &&
                             handleSendMessage()

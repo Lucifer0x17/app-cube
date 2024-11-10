@@ -10,7 +10,7 @@
 .chat-history {
     width: 200px;
     background-color: #161617;
-    border-right: 1px solid #ff394a;
+    border-right: 1px solid #f0b90b;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
 .chat-history-item {
     padding: 12px;
     cursor: pointer;
-    border-bottom: 1px solid rgba(255, 57, 74, 0.3);
+    border-bottom: 1px solid #f0b90b;
     transition: all 0.2s ease;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .chat-history-item.active {
-    background-color: #ff394a;
+    background-color: #f0b90b;
 }
 
 .chat-title {
@@ -76,7 +76,7 @@
     gap: 10px;
     padding: 15px;
     background-color: #000000;
-    border-top: 1px solid #ff394a;
+    border-top: 1px solid #f0b90b;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -88,7 +88,7 @@
     flex: 1;
     padding: 12px 16px;
     border-radius: 12px;
-    border: 1px solid #ff394a;
+    border: 1px solid #f0b90b;
     background-color: #161617;
     color: #f5f5f9;
     font-size: 0.9em;
@@ -98,7 +98,7 @@
     padding: 12px 24px;
     border-radius: 12px;
     border: none;
-    background-color: #ff394a;
+    background-color: #f0b90b;
     color: #f5f5f9;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -125,11 +125,11 @@
     background-color: #000000;
     color: #f5f5f9;
     margin-right: auto;
-    border: 1px solid #ff394a;
+    border: 1px solid #f0b90b;
 }
 
 .message.user {
-    background-color: #ff394a;
+    background-color: #f0b90b;
     color: #f5f5f9;
     margin-left: auto;
 }
@@ -147,7 +147,7 @@
 
 .new-chat-button {
     padding: 12px;
-    background-color: #ff394a;
+    background-color: #f0b90b;
     color: #f5f5f9;
     border: none;
     cursor: pointer;

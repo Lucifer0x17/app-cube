@@ -1,3 +1,4 @@
+import { createTransaction } from "@/app/utils/brian";
 import { create } from "zustand";
 
 const useStore = create((set: any) => ({
@@ -5,7 +6,7 @@ const useStore = create((set: any) => ({
 
     // Chat state
     messages: [
-        { text: "Welcome to Innov8! How can I help you today?", isBot: true },
+        { text: "Welcome to AppCube! How can I help you today?", isBot: true },
     ],
     inputMessage: "",
 
@@ -98,10 +99,10 @@ const useStore = create((set: any) => ({
         {
             id: 1,
             title: "First Conversation",
-            preview: "Welcome to Innov8!",
+            preview: "Welcome to AppCube!",
             messages: [
                 {
-                    text: "Welcome to Innov8! How can I help you today?",
+                    text: "Welcome to AppCube! How can I help you today?",
                     isBot: true,
                 },
             ],
@@ -114,7 +115,7 @@ const useStore = create((set: any) => ({
     // Actions
     setCurrentPage: (page: any) =>
         set((state: any) => {
-            document.title = `Innov8 - ${
+            document.title = `AppCube - ${
                 page.charAt(0).toUpperCase() + page.slice(1)
             }`;
             return { currentPage: page };
@@ -152,7 +153,11 @@ const useStore = create((set: any) => ({
             set({ isLoading: true });
 
             // Simulate bot response
-            setTimeout(() => {
+            setTimeout(async () => {
+                const data = await createTransaction(
+                    state.inputMessage,
+                    "0xbb7B8a36a065A4BB06AcfB218F1dc1BA45b4fad4"
+                );
                 set((state: any) => ({
                     conversations: state.conversations.map((conv: any) => {
                         if (conv.id === state.activeConversationId) {
@@ -161,7 +166,8 @@ const useStore = create((set: any) => ({
                                 messages: [
                                     ...conv.messages,
                                     {
-                                        text: "Thanks for your message! I'm here to help.",
+                                        text: data?.result[0]
+                                            .conversationHistory[1].content,
                                         isBot: true,
                                     },
                                 ],
