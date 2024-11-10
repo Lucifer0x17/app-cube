@@ -16,9 +16,9 @@ export default function UrlInput() {
     };
 
     return (
-        <>
+        <div className="w-[100%] h-[90%] mx-auto">
             {iframeUrl ? (
-                <div className="flex flex-col gap-4 bg-gradient-to-b from-[#3A3A3A5C] to-[#7373735C] w-[90%] px-3 pb-3 pt-5 text-center rounded-xl border border-[#343434]">
+                <div className="flex flex-col gap-4 bg-gradient-to-b from-[#3A3A3A5C] to-[#7373735C] w-[90%] mx-auto px-3 pb-3 pt-5 text-center rounded-xl border border-[#343434]">
                     <div
                         className="flex justify-end w-full cursor-pointer"
                         onClick={() => window.location.reload()}
@@ -41,7 +41,7 @@ export default function UrlInput() {
                     />
                 </div>
             ) : (
-                <div className="flex flex-col gap-4 bg-[#1C1C1CAD] w-[90%] px-10 py-8 text-center rounded-xl border border-[#343434]">
+                <div className="flex flex-col gap-4 bg-[#1C1C1CAD] w-[90%] mx-auto px-10 py-8 text-center rounded-xl border border-[#343434]">
                     <h2 className="text-[#F0B90B] font-semibold text-base">
                         Type or Paste the URL
                     </h2>
@@ -54,6 +54,6 @@ export default function UrlInput() {
                     />
                 </div>
             )}
-        </>
+        </div>
     );
 }
