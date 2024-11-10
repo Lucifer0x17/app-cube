@@ -37,47 +37,34 @@ export default function Main() {
     }, [sdkHasLoaded]);
 
     return (
-        <div
-            className="min-h-screen flex flex-col items-center justify-center text-black overflow-y-scroll"
-            style={{
-                backgroundColor: "#001afc",
-                backgroundBlendMode: "overlay",
-                backgroundRepeat: "repeat",
-            }}
-        >
-            <div className="min-h-screen max-w-screen-sm w-[35%]">
-                <div className="bg-[#000] pb-5">
-                    <div className="flex flex-col justify-center items-center h-screen w-full">
-                        <UrlInput />
-                    </div>
-                    <div className="w-[95%]">
-                        <div className="flex justify-end gap-3">
-                            <p
-                                className={`text-[#808080] text-2xl ${nanum_pen_script.className}`}
-                            >
-                                Here is your AI Friend
-                            </p>
-                            <Image
-                                src="./HandArrowRight.svg"
-                                alt="right-arrow"
-                                width={50}
-                                height={50}
-                            />
-                            <div className="bg-[#F0B90B] rounded-full p-3">
-                                <Image
-                                    src="./chat-bot.svg"
-                                    alt="chat-icon"
-                                    width={20}
-                                    height={20}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex justify-center py-4">
-                {isLoading ? <Spinner /> : <DynamicWidget />}
+        <div className="size-full flex flex-col justify-center items-center min-h-screen relative overflow-y-scroll">
+            <div className="w-full">
+                <UrlInput />
+            </div>
+            <div className="flex justify-end gap-3 w-[90%] mx-auto items-end absolute bottom-0 right-0">
+                <p
+                    className={`text-[#808080] text-2xl ${nanum_pen_script.className}`}
+                >
+                    Here is your AI Friend
+                </p>
+                <Image
+                    src="./HandArrowRight.svg"
+                    alt="right-arrow"
+                    width={50}
+                    height={50}
+                />
+                <div className="bg-[#F0B90B] rounded-full p-3">
+                    <Image
+                        src="./chat-bot.svg"
+                        alt="chat-icon"
+                        width={20}
+                        height={20}
+                    />
                 </div>
             </div>
+            {/* <div className="flex justify-center py-4">
+                    {isLoading ? <Spinner /> : <DynamicWidget />}
+                </div> */}
         </div>
     );
 }

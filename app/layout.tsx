@@ -40,7 +40,11 @@ export default function RootLayout({
                     walletConnectorExtensions: [GlobalWalletExtension],
                 }}
             >
-                <body className={dm_sans.className}>{children}</body>
+                <body
+                    className={`max-h-[100vh] h-[100vh] bg-[#000] ${dm_sans.className}`}
+                >
+                    {children}
+                </body>
             </DynamicContextProvider>
         </html>
     );
