@@ -1,47 +1,42 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { Nanum_Pen_Script } from "next/font/google";
 
-import { useEffect, useState } from "react";
 import {
     DynamicWidget,
-    useTelegramLogin,
+    useAuthenticateConnectedUser,
     useDynamicContext,
-} from "../lib/dynamic";
-
-import Spinner from "./Spinner";
+} from "@/lib/dynamic";
+import Spinner from "@/components/Spinner";
 import UrlInput from "@/components/UrlInput";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const nanum_pen_script = Nanum_Pen_Script({
     weight: "400",
     subsets: ["latin"],
 });
 
-export default function Main() {
-    const { sdkHasLoaded, user } = useDynamicContext();
-    const { telegramSignIn } = useTelegramLogin();
+const Home = () => {
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    // const { sdkHasLoaded, user, } = useDynamicContext()
+    const { isAuthenticating } = useAuthenticateConnectedUser();
 
-    useEffect(() => {
-        if (!sdkHasLoaded) return;
+    // useEffect(() => {
+    //     if (!sdkHasLoaded) return
+    //     if (user) setIsLoading(false)
+    //     setIsLoading(true)
 
-        const signIn = async () => {
-            if (!user) {
-                await telegramSignIn({ forceCreateUser: true });
-            }
-            setIsLoading(false);
-        };
-
-        signIn();
-    }, [sdkHasLoaded]);
-
+    // }, [user, sdkHasLoaded])
     return (
-        <div className="size-full flex flex-col justify-center items-center min-h-screen relative overflow-y-scroll">
+        <div className="size-full flex flex-col justify-between items-center min-h-screen overflow-y-scroll">
+            <div>{isAuthenticating ? <Spinner /> : <DynamicWidget />}</div>
             <div className="w-full">
                 <UrlInput />
             </div>
-            <div className="flex justify-end gap-3 w-[90%] mx-auto items-end absolute bottom-0 right-0">
+            <div className="flex justify-end gap-3 w-[90%] mx-auto items-end">
                 <p
                     className={`text-[#808080] text-2xl ${nanum_pen_script.className}`}
                 >
@@ -53,7 +48,10 @@ export default function Main() {
                     width={50}
                     height={50}
                 />
-                <div className="bg-[#F0B90B] rounded-full p-3">
+                <div
+                    className="bg-[#F0B90B] rounded-full p-3"
+                    onClick={() => router.push("/chat")}
+                >
                     <Image
                         src="./chat-bot.svg"
                         alt="chat-icon"
@@ -62,9 +60,8 @@ export default function Main() {
                     />
                 </div>
             </div>
-            {/* <div className="flex justify-center py-4">
-                    {isLoading ? <Spinner /> : <DynamicWidget />}
-                </div> */}
         </div>
     );
-}
+};
+
+export default Home;
