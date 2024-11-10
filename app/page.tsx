@@ -9,7 +9,7 @@ import {
     useDynamicContext,
 } from "../lib/dynamic";
 
-import Spinner from "./Spinner";
+import Spinner from "../components/Spinner";
 import UrlInput from "@/components/UrlInput";
 import Image from "next/image";
 
@@ -75,7 +75,7 @@ export default function Main() {
                     </div>
                 </div>
                 <div className="flex justify-center py-4">
-                {isLoading ? <Spinner /> : <DynamicWidget />}
+                    {isLoading ? <Spinner /> : <DynamicWidget />}
                 </div>
             </div>
         </div>

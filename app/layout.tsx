@@ -30,7 +30,7 @@ export default function RootLayout({
     }
     return (
         <html lang="en">
-            <DynamicContextProvider
+            {/* <DynamicContextProvider
                 settings={{
                     environmentId: dynamicEnvId,
                     walletConnectors: [
@@ -39,9 +39,9 @@ export default function RootLayout({
                     ],
                     walletConnectorExtensions: [GlobalWalletExtension],
                 }}
-            >
-                <body className={dm_sans.className}>{children}</body>
-            </DynamicContextProvider>
+            > */}
+            <body className={dm_sans.className}>{children}</body>
+            {/* </DynamicContextProvider> */}
         </html>
     );
 }
