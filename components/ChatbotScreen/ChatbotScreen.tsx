@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 import useStore from "../store/useStore";
 import "./ChatbotScreen.css";
 import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
-import { createTransaction } from "@/app/utils/brian";
+import { createTransaction } from "@/utils/brian";
 
 // Split into smaller components
 const ChatHistoryItem = ({ conversation, isActive, onClick }: any) => (
