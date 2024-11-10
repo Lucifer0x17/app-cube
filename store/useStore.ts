@@ -8,6 +8,7 @@ const useStore = create((set: any) => ({
     messages: [
         { text: "Welcome to AppCube! How can I help you today?", isBot: true },
     ],
+    steps: [],
     inputMessage: "",
 
     // Marketplace state
@@ -112,12 +113,13 @@ const useStore = create((set: any) => ({
 
     isLoading: false,
 
+    setStepReset: () => set({ steps: [] }),
+
     // Actions
     setCurrentPage: (page: any) =>
         set((state: any) => {
-            document.title = `AppCube - ${
-                page.charAt(0).toUpperCase() + page.slice(1)
-            }`;
+            document.title = `AppCube - ${page.charAt(0).toUpperCase() + page.slice(1)
+                }`;
             return { currentPage: page };
         }),
 
@@ -158,6 +160,7 @@ const useStore = create((set: any) => ({
                     state.inputMessage,
                     "0xbb7B8a36a065A4BB06AcfB218F1dc1BA45b4fad4"
                 );
+                console.log(data.result[0].data.steps)
                 set((state: any) => ({
                     conversations: state.conversations.map((conv: any) => {
                         if (conv.id === state.activeConversationId) {
@@ -177,6 +180,9 @@ const useStore = create((set: any) => ({
                     }),
                     isLoading: false,
                 }));
+                set((state: any) => ({
+                    steps: data.result[0].data.steps
+                }))
             }, 1000);
 
             return {

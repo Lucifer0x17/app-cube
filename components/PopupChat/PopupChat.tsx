@@ -5,7 +5,7 @@ import "./PopupChat.css";
 import ChatHeader from "./components/ChatHeader";
 import MessageList from "./components/MessageList";
 import ChatInput from "./components/ChatInput";
-import useStore from "../store/useStore";
+import useStore from "../../store/useStore";
 
 const PopupChat = () => {
     const [isOpen, setIsOpen] = useState(false);
